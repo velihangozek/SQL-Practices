@@ -16,10 +16,10 @@ select c.FirstName, c.LastName, o.OrderID, o.OrderDate
 from Customers c
 join Orders o on C.CustomerID = O.CustomerID -- Join --> Inner Join as default.
 
-/*
+
 delete from Customers
 where CustomerID = 2
-*/
+
 
 select p.productname, p.price, c.categoryname
 from products p
