@@ -1,9 +1,9 @@
-﻿/*
+﻿
 create database ETicaret
 use ETicaret
-*/
 
-/*
+
+
 create table Customers (
 	CustomerID int IDENTITY(1,1) PRIMARY KEY,
 	FirstName nvarchar(100),
@@ -35,132 +35,130 @@ create table OrderItems (
 	foreign key (OrderID) references Orders(OrderID),
 	foreign key (ProductID) references Products(ProductID), -- Sıranın bir önemi yok önce ProductID ilişkisini de yazabilirdik.
 )
-*/
 
-/*
+
+
 insert into Customers (FirstName, LastName, Email, PhoneNumber)
 values 
 ('Velihan', 'Gözek', 'velihangozek@hotmail.com', 5545226482)
-*/
 
-/*
+
+
 insert into Customers (FirstName, LastName, Email, PhoneNumber)
 values 
 ('Fatih', 'Kayacı', 'fatih@kayaci.com', '2131241242'),
 ('Ahmet', 'Kaya', 'ahmet@kaya.com', '1241242141')
-*/
 
-/*
+
+
 insert into Products (ProductName, Price, StockQuantity)
 values ('Laptop', 15000.500, 3),
-*/
 
-/*
+
+
 insert into Products (ProductName, Price, StockQuantity)
 values 
 ('Telefon', 10000.300, 6),
 ('Televizyon', 50000.800, 2),
 ('Kulaklık', 2500.500, 4)
-*/
 
-/*
+
+
 insert into Orders (OrderDate, CustomerID)
 values (GETDATE(), 1)
-*/
 
-/*
+
+
 insert into Orders (OrderDate, CustomerID)
 values (GETDATE(), 4) --> Hata verecek henüz 4 id'li customer olmadığından.
-*/
 
-/*
+
 insert into Orders (OrderDate, CustomerID)
 values
 (GETDATE(), 2),
 (GETDATE(), 3)
-*/
 
-/*
+
+
 insert into OrderItems (OrderID, ProductID, Quantity, Price)
 values (3, 1, 5, 2000.25)
-*/
 
-/*
+
+
 insert into OrderItems (OrderID, ProductID, Quantity, Price)
 values
 (1, 2, 4, 6000.65),
 (4, 1, 4, 3000.55)
-*/
 
-/*
+
+
 update Customers
 set Email = 'velihan.gozek@gmail.com'
 where CustomerID = 1
-*/
 
-/*
+
+
 update Customers
 set Email = 'velo@gmail.com', FirstName = 'Velo'
 where CustomerID = 1
-*/
 
-/*
+
+
 update Products
 set Price = Price * 0.9
 where Price > 3000
-*/
 
-/*
+
+
 update Products
 set StockQuantity = StockQuantity * 5
 where Price < 10000 AND StockQuantity > 3
-*/
 
-/*
+
+
 update Products
 set StockQuantity = 500
 where Price > 30000 OR StockQuantity > 25
-*/
 
-/*
+
+
 update Products
 set StockQuantity = 1000
 where (Price < 2000 AND StockQuantity > 400) OR Price > 10000
-*/
 
-/*
+
+
 update Products
 set Price = Price * 1.05
 where StockQuantity < 25 OR Price > 40000
-*/
 
-/*
+
+
 delete from Customers
 where CustomerID = 2
-*/
 
-/*
+
 insert into Customers (FirstName, LastName, Email, PhoneNumber)
 values ('Sümeyye', 'Öztürk', 'sumeyye@gmail.com', '1236547896')
-*/
 
-/*
+
+
 delete from Customers
 where CustomerID = 4
-*/
 
-/*
+
+
 select ProductID, ProductName, SUM(Price*StockQuantity) as TotalPriceByProductQuantity -- Tüm ürünlerin toplam stoklarıyla çarpılarak fiyatı
 from Products
 group by ProductID, ProductName
-*/
 
-/*
+
+
 select SUM(Price) as TotalAllProductPrice -- Tüm ürünlerin toplam fiyatı
 from Products
-*/
 
-/*
+
+
 select AVG(Price) as AveragePrice -- Tüm ürünlerin ortalama fiyatı
 from products
 
@@ -177,33 +175,33 @@ MaxPriceProduct AS (
 SELECT * FROM MinPriceProduct
 UNION ALL
 SELECT * FROM MaxPriceProduct
-*/
 
-/*
+
+
 select MIN(Price) as LowestPrice, MAX(Price) as HighestPrice
 from Products
-*/
 
-/*
+
+
 select COUNT(*) as UniqueProductQuantity
 from products
-*/
 
-/*
+
+
 select * 
 from products 
-*/
 
-/*
+
+
 select productname, stockquantity, price
 from products
 order by stockquantity asc, price desc
-*/
+
 
 -- CategoryID ekleyelim
 
 
-/*
+
 alter table Products
 add CategoryID int
 
@@ -226,13 +224,13 @@ add foreign key (CategoryID) references Categories(CategoryID)
 update products
 set categoryID = 1
 where productname IN ('Laptop', 'Telefon', 'Kulaklık', 'Televizyon')
-*/
 
-/*
+
+
 select CategoryID, SUM(StockQuantity) as TotalStock
 from Products
 GROUP BY CategoryID
-*/
+
 
 insert into Products (ProductName, Price, StockQuantity)
 values ('Koltuk', 12000, 28)
